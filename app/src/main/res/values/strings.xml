@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">My Contact</string>
+    <string name="navigation_deawer_open">Open_drawer</string>
+    <string name="navigation_deawer_close">Close_Drawer</string>
+    <string name="top_icon">TOP ICON</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="forgot_password">FORGOT PASSWORD?</string>
+    <string name="or">OR</string>
+    <string name="google_icon">google icon</string>
+    <string name="facebook_icon">facebook icon</string>
+    <string name="new_user_register_now">New User? Register Now</string>
+    <string name="name">Name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_a_account_register_now">Already have a account? Login Now</string>
+    <string name="number">Number</string>
+
+</resources>

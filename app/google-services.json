@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "815376818906",
+    "project_id": "my-contact-5b05d",
+    "storage_bucket": "my-contact-5b05d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815376818906:android:a217dfd29db85ea0997be3",
+        "android_client_info": {
+          "package_name": "net.sourov.mycontact"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815376818906-3c7d4r1irf7qkt12fmmmdcm5prp2clq5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgYEHjQvFeXqv6l6jVUCHGKKO1UWWFFn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "815376818906-3c7d4r1irf7qkt12fmmmdcm5prp2clq5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
