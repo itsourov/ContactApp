@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -77,6 +79,8 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
+
     @Override
     public void onStart() {
         super.onStart();
@@ -85,6 +89,15 @@ public class LoginActivity extends AppCompatActivity {
         if (currentUser != null) {
             startActivity(new Intent(LoginActivity.this, Dashboard.class));
             finish();
+        }
+
+        SaveState saveState;
+        saveState = new SaveState(this);
+
+        if (saveState.getState()) {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
 }

@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -140,4 +141,18 @@ public class SignUpActivity extends AppCompatActivity {
                 });
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        SaveState saveState;
+        saveState = new SaveState(this);
+
+        if (saveState.getState()) {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
 }
