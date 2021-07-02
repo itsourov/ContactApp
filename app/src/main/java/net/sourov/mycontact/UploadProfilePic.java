@@ -147,15 +147,11 @@ public class UploadProfilePic extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(Uri uri) {
 
-                                            String PATH = getExternalFilesDir(Environment.DIRECTORY_DCIM).toString() + "/userphoto/" + "profile.jpg";
-                                            File file = new File(PATH);
-                                            if (file.exists()){
-                                                file.delete();
-                                            }
+
 
                                             String imageUrl = uri.toString();
                                             uploadData(imageUrl);
-                                            syncData(imageUrl);
+
 
 
 
@@ -194,34 +190,11 @@ public class UploadProfilePic extends AppCompatActivity {
 
 
                     Toast.makeText(UploadProfilePic.this, "data sent to database", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(UploadProfilePic.this, UploadProfilePic.class));
+                    startActivity(new Intent(UploadProfilePic.this, Dashboard.class));
                     finish();
                 });
     }
 
-    private void syncData(String imageUrl) {
 
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(imageUrl));
-        request.setDescription("Downloading file. please wait...");
-        String cookie = CookieManager.getInstance().getCookie(imageUrl);
-        request.addRequestHeader("cookie", cookie);
-
-        request.setDestinationInExternalFilesDir(UploadProfilePic.this, Environment.DIRECTORY_DCIM + "/userphoto", "profile.jpg");
-
-        DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-        downloadManager.enqueue(request);
-        //set BroadcastReceiver
-        BroadcastReceiver onComplete = new BroadcastReceiver() {
-            public void onReceive(Context context, Intent intent) {
-
-                startActivity(new Intent(UploadProfilePic.this, FriendList.class));
-                finish();
-
-
-            }
-        };
-        //register receiver for when .apk download is compete
-        registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-    }
 
 }

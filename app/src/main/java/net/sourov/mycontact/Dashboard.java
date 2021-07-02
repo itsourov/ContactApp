@@ -3,15 +3,14 @@ package net.sourov.mycontact;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,8 +24,6 @@ import net.sourov.mycontact.Model.Users;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-
 public class Dashboard extends AppCompatActivity {
 
     ImageView circleImageViewOnDash;
@@ -36,11 +33,13 @@ public class Dashboard extends AppCompatActivity {
 
     FirebaseAuth mAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         mAuth = FirebaseAuth.getInstance();
+
 
         circleImageViewOnDash = findViewById(R.id.circleImageViewOnDash);
         showDetailsOnDash = findViewById(R.id.showDetailsOnDash);
@@ -123,4 +122,6 @@ public class Dashboard extends AppCompatActivity {
 
 
     }
+
+
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -13,6 +14,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -47,6 +49,7 @@ public class FriendList extends AppCompatActivity implements NavigationView.OnNa
     ContactAdapter mAdapter;
 
     FloatingActionButton floatingActionButtonOnFriendList;
+    SwipeRefreshLayout refreshLayoutFL;
 
 
     DrawerLayout drawerLayout;
@@ -61,6 +64,7 @@ public class FriendList extends AppCompatActivity implements NavigationView.OnNa
         // get the Firebase  storage reference
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        refreshLayoutFL = findViewById(R.id.refreshLayoutFL);
 
 
         //hooks for menu layout
@@ -87,6 +91,8 @@ public class FriendList extends AppCompatActivity implements NavigationView.OnNa
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         floatingActionButtonOnFriendList = findViewById(R.id.floatingActionButtonOnFriendList);
+
+
         floatingActionButtonOnFriendList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +100,17 @@ public class FriendList extends AppCompatActivity implements NavigationView.OnNa
                 finish();
             }
         });
+
+        refreshLayoutFL.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                displayContacts();
+                mAdapter.notifyDataSetChanged();
+
+            }
+        });
+
+
 
 
 
@@ -111,12 +128,14 @@ public class FriendList extends AppCompatActivity implements NavigationView.OnNa
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+
             contactsList.clear();
             for (DataSnapshot ds: snapshot.getChildren()){
                 Contacts contacts = ds.getValue(Contacts.class);
                 contactsList.add(contacts);
                 mAdapter = new ContactAdapter(FriendList.this,contactsList);
                 recyclerView.setAdapter(mAdapter );
+                refreshLayoutFL.setRefreshing(false);
             }
             }
 
