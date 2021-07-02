@@ -55,6 +55,9 @@ public class StartActivity extends AppCompatActivity {
         if (user != null){
             startActivity(new Intent(StartActivity.this, Dashboard.class));
             finish();
+        } else {
+            startActivity(new Intent(StartActivity.this, LoginActivity.class));
+            finish();
         }
     }
 }

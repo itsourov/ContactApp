@@ -1,16 +1,15 @@
 package net.sourov.mycontact;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.os.Build;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -94,21 +93,20 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Dashboard.this, AddFriends.class));
-                finish();
             }
         });
 
         findViewById(R.id.updateFriendsOnDash).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(Dashboard.this, FriendList.class));
             }
         });
 
         findViewById(R.id.removeFdOnDash).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(Dashboard.this, FriendList.class));
             }
         });
 

@@ -5,9 +5,9 @@
     android:id="@+id/drawer_layout_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+
     tools:context=".FriendList"
-    tools:openDrawer="end">
+    tools:openDrawer="start">
 
 
     <com.google.android.material.navigation.NavigationView
@@ -16,7 +16,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/header"
-        app:menu="@menu/logged_in_menu" />
+        android:background="@drawable/navigation_bg"
+        app:menu="@menu/logged_in_menu"
+        app:itemBackground="@drawable/roung_border_nav_item"
+        app:itemTextColor="@color/white"/>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,7 +58,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:clickable="true"
-            android:src="@drawable/addnewfriend"
+            android:src="@drawable/add_friend"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

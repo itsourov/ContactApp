@@ -1,8 +1,13 @@
 package net.sourov.mycontact;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -14,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -22,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity {
     ProgressBar progressBarOnSU;
 
     private FirebaseAuth mAuth;
-
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
 
     @Override
@@ -38,6 +44,35 @@ public class SignUpActivity extends AppCompatActivity {
         inputDateSU = findViewById(R.id.inputDateSU);
         progressBarOnSU = findViewById(R.id.progressBarOnSU);
 
+        inputDateSU.setFocusable(false);
+        inputDateSU.setClickable(true);
+        inputDateSU.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        SignUpActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                Log.d("TAG", "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+
+                String date = month + "/" + day + "/" + year;
+                inputDateSU.setText(date);
+            }
+        };
 
 
         findViewById(R.id.btnSignUpOnSU).setOnClickListener(v -> {
