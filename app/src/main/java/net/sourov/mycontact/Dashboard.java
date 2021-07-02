@@ -80,13 +80,14 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent showDetailsOnDash = new Intent(Dashboard.this, UserDetailsShowEdit.class);
-                showDetailsOnDash.putExtra("date_of_birth", dateOFBirth);
-                showDetailsOnDash.putExtra("email", email);
-                showDetailsOnDash.putExtra("imageurl", imageUrl);
-                showDetailsOnDash.putExtra("name", name);
-                showDetailsOnDash.putExtra("number", number);
-                startActivity(showDetailsOnDash);
+                startActivity(new Intent(Dashboard.this, UserDetailsShowEdit.class));
+            }
+        });
+
+        findViewById(R.id.editUDS1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this, UserDetailsShowEdit.class));
             }
         });
 

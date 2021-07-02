@@ -115,10 +115,16 @@ public class AddFriends extends AppCompatActivity {
                 etDOBOnAddFD.setText(date);
             }
         };
-        imageOnAddFD.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.openGalleryOnAddFd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imagePickDialog();
+                openGallery();
+            }
+        });
+        findViewById(R.id.openCameraOnAddFD).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCamera();
             }
         });
 
@@ -195,11 +201,18 @@ public class AddFriends extends AppCompatActivity {
     }
 
 
-    private void imagePickDialog() {
+    private void openGallery() {
         ImagePicker.with(this)
-                .crop(1f, 1f)                    //Crop image(Optional), Check Customization for more option
+                .cropSquare()
+                .galleryOnly()
                 .compress(500)
-                // .maxResultSize(700, 700)  //Final image size will be less than 1 MB(Optional)//Final image resolution will be less than 1080 x 1080(Optional)
+                .start();
+    }
+    private void openCamera() {
+        ImagePicker.with(this)
+                .cropSquare()
+                .cameraOnly()
+                .compress(500)
                 .start();
     }
 

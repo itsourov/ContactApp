@@ -50,11 +50,14 @@
         app:layout_constraintStart_toEndOf="@+id/nameTextOnDash" />
 
     <Button
+        android:background="@drawable/round_bg"
         android:id="@+id/showDetailsOnDash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Details"
+        android:text="Show Details"
+        android:padding="10dp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameTextOnDash" />
@@ -84,6 +87,9 @@
         app:layout_constraintTop_toBottomOf="@+id/divider">
 
         <Button
+            android:textColor="@color/white"
+            android:layout_margin="10dp"
+            android:background="@drawable/button"
             android:id="@+id/AddFDOnDash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -93,6 +99,9 @@
             android:text="Add Friends" />
 
         <Button
+            android:textColor="@color/white"
+            android:layout_margin="10dp"
+            android:background="@drawable/button"
             android:id="@+id/updateFriendsOnDash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,6 +111,9 @@
             android:text="Update Friends" />
 
         <Button
+            android:textColor="@color/white"
+            android:layout_margin="10dp"
+            android:background="@drawable/button"
             android:id="@+id/removeFdOnDash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,6 +123,9 @@
             android:text="Remove Friends" />
 
         <Button
+            android:textColor="@color/white"
+            android:layout_margin="10dp"
+            android:background="@drawable/button"
             android:id="@+id/friendListOnDash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

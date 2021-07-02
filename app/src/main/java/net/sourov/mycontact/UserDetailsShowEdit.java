@@ -104,21 +104,29 @@ public class UserDetailsShowEdit extends AppCompatActivity {
 
         findViewById(R.id.editUDS1).setOnClickListener(v -> {
             etNameOnUDS.setEnabled(true);
+            etNameOnUDS.setSelection(etNameOnUDS.getText().length());
+            etNameOnUDS.requestFocus();
             etNameOnUDS.setTextColor(Color.parseColor("#FF03C0"));
             saveInfoOnUDS.setVisibility(View.VISIBLE);
         });
         findViewById(R.id.editUDS2).setOnClickListener(v -> {
             etEmailOnUDS.setEnabled(true);
+            etEmailOnUDS.setSelection(etEmailOnUDS.getText().length());
+            etEmailOnUDS.requestFocus();
             etEmailOnUDS.setTextColor(Color.parseColor("#FF03C0"));
             saveInfoOnUDS.setVisibility(View.VISIBLE);
         });
         findViewById(R.id.editUDS3).setOnClickListener(v -> {
             etNumberOnUDS.setEnabled(true);
+            etNumberOnUDS.setSelection(etNumberOnUDS.getText().length());
+            etNumberOnUDS.requestFocus();
             etNumberOnUDS.setTextColor(Color.parseColor("#FF03C0"));
             saveInfoOnUDS.setVisibility(View.VISIBLE);
         });
         findViewById(R.id.editUDS4).setOnClickListener(v -> {
             etDOBOnUDS.setEnabled(true);
+            etDOBOnUDS.setSelection(etDOBOnUDS.getText().length());
+            etDOBOnUDS.requestFocus();
             etDOBOnUDS.setTextColor(Color.parseColor("#FF03C0"));
             saveInfoOnUDS.setVisibility(View.VISIBLE);
         });
@@ -155,5 +163,10 @@ public class UserDetailsShowEdit extends AppCompatActivity {
                     spinnerOnUDS.setVisibility(View.GONE);
                     Toast.makeText(UserDetailsShowEdit.this, "data sent to database", Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }
