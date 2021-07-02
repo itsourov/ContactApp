@@ -79,14 +79,22 @@
             app:layout_constraintTop_toBottomOf="@+id/profileImageOnUPP">
 
             <Button
+                android:textColor="@color/white"
+                android:drawableTint="@color/white"
+                android:drawableLeft="@drawable/ic_image"
                 android:id="@+id/choiceImageOnUPP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/round_bg"
-                android:text="Choice image" />
+                android:text="Choice image"
+                android:padding="15dp"/>
 
             <Button
+                android:drawableTint="@color/white"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_camera"
+                android:padding="15dp"
                 android:id="@+id/takeImageOnUPP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -105,6 +113,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
             <Button
+                android:padding="15dp"
+                android:textColor="@color/white"
                 android:id="@+id/submitOnUpp"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"

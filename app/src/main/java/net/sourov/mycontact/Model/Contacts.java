@@ -36,31 +36,16 @@ public class Contacts {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public String getUniqueID() {
         return uniqueID;
     }
 
-    public void setUniqueID(String uniqueID) {
-        this.uniqueID = uniqueID;
-    }
 }

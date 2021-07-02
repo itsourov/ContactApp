@@ -5,9 +5,7 @@
     android:id="@+id/myFriendViewItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:background="@drawable/border_post_item"
-    android:padding="6dp">
+    android:padding="10dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         app:civ_border_width="5dp"
@@ -38,6 +36,7 @@
         android:id="@+id/callOnContactItem"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

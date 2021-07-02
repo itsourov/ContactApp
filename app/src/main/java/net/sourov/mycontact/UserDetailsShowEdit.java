@@ -81,7 +81,7 @@ public class UserDetailsShowEdit extends AppCompatActivity {
                 etDOBOnUDS.setText(dateOfBirth);
 
                 nameTextOnUDS.setText(name);
-                Glide.with(UserDetailsShowEdit.this).load(imageUrl).into(circleImageView);
+                Glide.with(UserDetailsShowEdit.this).load(imageUrl).placeholder(R.drawable.user).error(R.drawable.image_not_found).into(circleImageView);
 
 
             }

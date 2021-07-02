@@ -74,7 +74,7 @@
         android:gravity="center"
         android:text="Loading name"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="#F606FF"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

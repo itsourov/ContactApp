@@ -1,9 +1,7 @@
 package net.sourov.mycontact;
 
 import android.content.Intent;
-
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 import net.sourov.mycontact.Model.Users;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -46,7 +46,7 @@ public class Dashboard extends AppCompatActivity {
 
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users")
-                .child(mAuth.getCurrentUser().getUid()).child("selfInfo");
+                .child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).child("selfInfo");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -54,6 +54,7 @@ public class Dashboard extends AppCompatActivity {
 
                 Users users = snapshot.getValue(Users.class);
 
+                assert users != null;
                 dateOFBirth = users.getDateOFBirth();
                 email = users.getEmail();
                 imageUrl = users.getImageUrl();
@@ -64,7 +65,7 @@ public class Dashboard extends AppCompatActivity {
 
 
                 nameTextOnDash.setText(name);
-                Glide.with(Dashboard.this).load(imageUrl).into(circleImageViewOnDash);
+                Glide.with(Dashboard.this).load(imageUrl).placeholder(R.drawable.user).error(R.drawable.image_not_found).into(circleImageViewOnDash);
             }
 
             @Override
@@ -74,49 +75,17 @@ public class Dashboard extends AppCompatActivity {
         });
 
 
-        showDetailsOnDash.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        showDetailsOnDash.setOnClickListener(v -> startActivity(new Intent(Dashboard.this, UserDetailsShowEdit.class)));
 
-                startActivity(new Intent(Dashboard.this, UserDetailsShowEdit.class));
-            }
-        });
+        findViewById(R.id.editUDS1).setOnClickListener(v -> startActivity(new Intent(Dashboard.this, UserDetailsShowEdit.class)));
 
-        findViewById(R.id.editUDS1).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, UserDetailsShowEdit.class));
-            }
-        });
+        findViewById(R.id.AddFDOnDash).setOnClickListener(v -> startActivity(new Intent(Dashboard.this, AddFriends.class)));
 
-        findViewById(R.id.AddFDOnDash).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, AddFriends.class));
-            }
-        });
+        findViewById(R.id.updateFriendsOnDash).setOnClickListener(v -> startActivity(new Intent(Dashboard.this, FriendList.class)));
 
-        findViewById(R.id.updateFriendsOnDash).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, FriendList.class));
-            }
-        });
+        findViewById(R.id.removeFdOnDash).setOnClickListener(v -> startActivity(new Intent(Dashboard.this, FriendList.class)));
 
-        findViewById(R.id.removeFdOnDash).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, FriendList.class));
-            }
-        });
-
-        findViewById(R.id.friendListOnDash).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, FriendList.class));
-
-            }
-        });
+        findViewById(R.id.friendListOnDash).setOnClickListener(v -> startActivity(new Intent(Dashboard.this, FriendList.class)));
 
 
     }

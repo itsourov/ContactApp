@@ -57,7 +57,7 @@ public class FriendsProfile extends AppCompatActivity {
         imageUrl = getIntent().getStringExtra("imageurl");
         uniqueid = getIntent().getStringExtra("uniqueid");
 
-        Glide.with(FriendsProfile.this).load(getIntent().getStringExtra("imageurl")).into(circleImageViewOnFP);
+        Glide.with(FriendsProfile.this).load(getIntent().getStringExtra("imageurl")).placeholder(R.drawable.user).error(R.drawable.image_not_found).into(circleImageViewOnFP);
         nameTextOnFP.setText(name);
         etNameOnFP.setText(name);
         etNumberOnFP.setText(number);

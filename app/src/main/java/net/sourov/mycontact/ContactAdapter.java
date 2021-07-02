@@ -49,7 +49,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactH
         Contacts contacts = contactsList.get(position);
         holder.contactName.setText(contacts.getName());
         holder.addressOnContactItem.setText(contacts.getAddress());
-        Glide.with(context).load(contacts.getImageUrl()).into(holder.contactImg);
+        Glide.with(context).load(contacts.getImageUrl()).placeholder(R.drawable.user).into(holder.contactImg);
         holder.callOnContactItem.setOnClickListener(v -> {
 
             String phone = contacts.getNumber();

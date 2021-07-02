@@ -12,14 +12,11 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view_profile"
-        android:layout_width="wrap_content"
+        android:layout_width="360dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/header"
-        android:background="@drawable/navigation_bg"
-        app:menu="@menu/logged_in_menu"
-        app:itemBackground="@drawable/roung_border_nav_item"
-        app:itemTextColor="@color/white"/>
+        app:menu="@menu/logged_in_menu"/>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
