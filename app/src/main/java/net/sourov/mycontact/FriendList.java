@@ -3,17 +3,23 @@ package net.sourov.mycontact;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,11 +63,16 @@ public class FriendList extends AppCompatActivity implements NavigationView.OnNa
 
     DrawerLayout drawerLayout;
 
+    NavigationView navigationView;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_list);
         mAuth = FirebaseAuth.getInstance();
+
 
 
         // get the Firebase  storage reference
@@ -75,7 +86,7 @@ public class FriendList extends AppCompatActivity implements NavigationView.OnNa
         toolbar = findViewById(R.id.toolbar_profile);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout_profile);
-        NavigationView navigationView = findViewById(R.id.nav_view_profile);
+        navigationView = findViewById(R.id.nav_view_profile);
         navigationView.setItemIconTintList(null);
 
         //navigation toggle
@@ -85,7 +96,16 @@ public class FriendList extends AppCompatActivity implements NavigationView.OnNa
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        recyclerView = findViewById(R.id.recyclerViewOnProfile);
+        navigationView.getMenu().findItem(R.id.darkModeMenu)
+                .setActionView(new Switch(this));
+
+
+
+
+
+
+
+                recyclerView = findViewById(R.id.recyclerViewOnProfile);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         
@@ -120,6 +140,8 @@ public class FriendList extends AppCompatActivity implements NavigationView.OnNa
 
 
     }
+
+
 
     private void displayContacts() {
         contactsList =  new ArrayList<>();
@@ -175,7 +197,40 @@ public class FriendList extends AppCompatActivity implements NavigationView.OnNa
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(FriendList.this,LoginActivity.class));
             finish();
+        } else if (itemId == R.id.darkModeMenu) {
+          if (((Switch) navigationView.getMenu().findItem(R.id.darkModeMenu).getActionView()).isChecked()){
+              ((Switch) navigationView.getMenu().findItem(R.id.darkModeMenu).getActionView()).setChecked(false);
+          } else if (!((Switch) navigationView.getMenu().findItem(R.id.darkModeMenu).getActionView()).isChecked()){
+              ((Switch) navigationView.getMenu().findItem(R.id.darkModeMenu).getActionView()).setChecked(true);
+          }
         }
         return true;
+    }
+
+
+    SaveState saveState;
+    @Override
+    protected void onStart() {
+        super.onStart();
+        saveState = new SaveState(this);
+
+        if (saveState.getState()) {
+            ((Switch) navigationView.getMenu().findItem(R.id.darkModeMenu).getActionView()).setChecked(true);
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            ((Switch) navigationView.getMenu().findItem(R.id.darkModeMenu).getActionView()).setChecked(false);
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+
+        ((Switch) navigationView.getMenu().findItem(R.id.darkModeMenu).getActionView()).setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                saveState.setState(true);
+                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                saveState.setState(false);
+                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+        });
     }
 }
