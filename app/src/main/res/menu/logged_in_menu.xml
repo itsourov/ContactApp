@@ -17,6 +17,11 @@
     <menu android:checkableBehavior="single">
         <group >
             <item
+                android:id="@+id/darkModeMenu"
+                android:title="Dark Mode"
+                android:icon="@drawable/ic_camera"
+                app:actionViewClass="androidx.appcompat.widget.SwitchCompat"/>
+            <item
                 android:id="@+id/log_out_menu"
                 android:icon="@drawable/log_out"
                 android:title="Logout" />

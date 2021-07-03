@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyContact">
-        <activity android:name=".PhoneVerification"></activity>
+        <activity android:name=".FriendsDelete"></activity>
+        <activity android:name=".PhoneVerification" />
         <activity
             android:name=".UserDetailsShowEdit"
             android:windowSoftInputMode="stateHidden" />

@@ -53,7 +53,7 @@ public class StartActivity extends AppCompatActivity {
 
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null){
-            startActivity(new Intent(StartActivity.this, Dashboard.class));
+            startActivity(new Intent(StartActivity.this, FriendsDelete.class));
             finish();
         } else {
             startActivity(new Intent(StartActivity.this, LoginActivity.class));

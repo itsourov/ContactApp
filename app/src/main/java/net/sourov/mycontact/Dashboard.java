@@ -1,5 +1,6 @@
 package net.sourov.mycontact;
 
+import android.app.UiModeManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -50,6 +51,8 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         setContentView(R.layout.activity_dashboard);
         mAuth = FirebaseAuth.getInstance();
 
+
+
         //hooks for menu layout
         Toolbar toolbar;
         toolbar = findViewById(R.id.toolbar_dash);
@@ -96,7 +99,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                 Glide
                         .with(Dashboard.this)
                         .load(imageUrl)
-                        .centerCrop()
                         .placeholder(R.drawable.user)
                         .into(circleImageViewOnDash);
 

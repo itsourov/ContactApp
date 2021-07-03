@@ -50,8 +50,6 @@ public class FriendList extends AppCompatActivity implements NavigationView.OnNa
     FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
 
-    FirebaseStorage storage;
-    StorageReference storageReference;
 
     RecyclerView recyclerView;
     List<Contacts> contactsList;
@@ -75,9 +73,7 @@ public class FriendList extends AppCompatActivity implements NavigationView.OnNa
 
 
 
-        // get the Firebase  storage reference
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
+
         refreshLayoutFL = findViewById(R.id.refreshLayoutFL);
 
 
