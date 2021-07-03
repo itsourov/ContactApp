@@ -53,16 +53,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="17dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="5dp"
-        android:src="@drawable/ic_edit"
-        app:layout_constraintBottom_toBottomOf="@+id/nameTextOnUDS"
-        app:layout_constraintStart_toEndOf="@+id/nameTextOnUDS" />
-
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageViewOnUDS"
         android:layout_width="170dp"
